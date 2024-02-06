@@ -18,7 +18,7 @@ search_keywords = input('Please enter keywords to search for pdfs\r\n')
 if len(search_keywords.split()) > 1:
     search_input = '+'.join(search_keywords.split())
 
-url = f'https://www.google.com/search?q={search_keywords}+{params}+{extension}'
+url = f'https://www.google.com/search?q={search_keywords}+{params}+{extension}&num=1000'
 
 driver = webdriver.Chrome(options=options)
 driver.get(url)
@@ -36,13 +36,12 @@ pdf_list = []
 
 count = 0
 for a in soup.find_all('a', href=True):
-    print(f'Found {a} at {count}')
     count += 1
     if re.match('^https://.*\.pdf$', a['href']):
         url = a['href']
         pdf_list.append(url)
 
-print(f'Found {pdf_list} list of pdfs')
+print(f'Found {len(pdf_list)} documents.')
 df = pd.DataFrame({
     'documentos': pdf_list
 })
