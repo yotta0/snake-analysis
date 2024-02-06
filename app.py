@@ -15,8 +15,12 @@ options.add_argument('--headless')
 params = "filetype"
 extension = "pdf"
 search_input = input('Search here\r\n')
+if len(search_input.split()) > 1:
+    search_input = '+'.join(search_input.split())
+
 url = f'https://www.google.com/search?q={search_input}+{params}+{extension}'
 
+print(f'\n\nAccessing {url}\n\n')
 driver = webdriver.Chrome(options=options)
 driver.get(url)
 
