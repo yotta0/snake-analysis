@@ -14,11 +14,11 @@ options.add_argument('--headless')
 
 params = "filetype"
 extension = "pdf"
-search_input = input('Search here\r\n')
-if len(search_input.split()) > 1:
-    search_input = '+'.join(search_input.split())
+search_keywords = input('Please enter keywords to search for pdfs\r\n')
+if len(search_keywords.split()) > 1:
+    search_input = '+'.join(search_keywords.split())
 
-url = f'https://www.google.com/search?q={search_input}+{params}+{extension}'
+url = f'https://www.google.com/search?q={search_keywords}+{params}+{extension}'
 
 driver = webdriver.Chrome(options=options)
 driver.get(url)
