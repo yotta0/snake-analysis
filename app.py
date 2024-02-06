@@ -20,7 +20,6 @@ if len(search_input.split()) > 1:
 
 url = f'https://www.google.com/search?q={search_input}+{params}+{extension}'
 
-print(f'\n\nAccessing {url}\n\n')
 driver = webdriver.Chrome(options=options)
 driver.get(url)
 
